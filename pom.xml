@@ -15,5 +15,7 @@
   <modules>
   	<module>eureka-server</module>
   	<module>diagnostic-service</module>
+  	<module>doctor-service</module>
+  	<module>patient-service</module>
   </modules>
 </project>
