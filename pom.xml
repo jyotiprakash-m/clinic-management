@@ -17,5 +17,6 @@
   	<module>diagnostic-service</module>
   	<module>doctor-service</module>
   	<module>patient-service</module>
+  	<module>api-gateway</module>
   </modules>
 </project>

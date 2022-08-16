@@ -1,0 +1,52 @@
+server:
+  port: 8480
+spring:
+  application:
+    name: api-gateway
+  cloud:
+     gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+              allowedOrigins: "*"
+              allowedMethods: "*"
+              allowedHeaders: "*" 
+      routes:
+        - id: diagnostic-service
+          uri: lb://diagnostic-service:8180
+          predicates:
+            - Path=/diagnostic/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: diagnostic-service
+                fallbackuri: forward:/diagnosticServiceFallback
+        - id: doctor-service
+          uri: lb://doctor-service:8280
+          predicates:
+            - Path=/doctor/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: doctor-service
+                fallbackuri: forward:/doctorServiceFallback
+        - id: patient-service
+          uri: lb://patient-service:8380
+          predicates:
+            - Path=/patient/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: patient-service
+                fallbackuri: forward:/patientServiceFallback
+
+# Eureka Client
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka/}
