@@ -13,7 +13,7 @@ services:
     ports:
       - 8180:8180
     environment:
-      - JAVA_OPTS= -DEUREKA_SERVER=http://eureka-server:8761/eureka  -DDB_USER=root -DDB_PASSWORD=root -DJDBC=jdbc:mariadb://localhost:3306/clinicmanagement_diagnosticservice_db
+      - JAVA_OPTS= -DEUREKA_SERVER=http://eureka-server:8761/eureka  -DDB_USER=admin -DDB_PASSWORD=welcome1 -DJDBC=jdbc:mariadb://training.cy8hyp7r7owp.us-east-1.rds.amazonaws.com:3306/clinicmanagement_diagnosticservice_db
 
     links:
       - eureka-server
@@ -23,7 +23,7 @@ services:
     ports:
       - 8280:8280
     environment:
-      - JAVA_OPTS= -DEUREKA_SERVER=http://eureka-server:8761/eureka  -DDB_USER=root -DDB_PASSWORD=root -DJDBC=jdbc:mariadb://localhost:3306/clinicmanagement_doctorservice_db
+      - JAVA_OPTS= -DEUREKA_SERVER=http://eureka-server:8761/eureka  -DDB_USER=admin -DDB_PASSWORD=welcome1 -DJDBC=jdbc:mariadb://training.cy8hyp7r7owp.us-east-1.rds.amazonaws.com:3306/clinicmanagement_doctorservice_db
 
     links:
       - eureka-server
@@ -33,7 +33,7 @@ services:
     ports:
       - 8380:8380
     environment:
-      - JAVA_OPTS= -DEUREKA_SERVER=http://eureka-server:8761/eureka  -DDB_USER=root -DDB_PASSWORD=root -DJDBC=jdbc:mariadb://localhost:3306/clinicmanagement_patientservice_db
+      - JAVA_OPTS= -DEUREKA_SERVER=http://eureka-server:8761/eureka  -DDB_USER=admin -DDB_PASSWORD=welcome1 -DJDBC=jdbc:mariadb://training.cy8hyp7r7owp.us-east-1.rds.amazonaws.com:3306/clinicmanagement_patientservice_db
 
     links:
       - eureka-server
